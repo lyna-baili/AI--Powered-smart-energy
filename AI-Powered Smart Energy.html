@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextGen AI — Smart Energy Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index-css.css">
+</head>
+
+
+<body>
+    <!-- HEADER -->
+<header>
+    <div class="logo">
+        <div class="logo-icon">⚡   
+        </div>
+        <div>NextGen <span>AI</span> Energy
+        </div>
+    </div>
+    <div class="header-right">
+        <div class="status-pill">
+            <div class="dot-live">
+
+            </div> SYSTÈME ACTIF</div>
+                    <div class="time-display" id="clock">--:--:--</div>
+                    </div>
+</header>
+
+<div class="container">
+<!-- PAGE TITLE -->
+    <div class="page-title fade-in">
+        <h1>Smart Energy <span>Management</span></h1>
+        <p>// AI-powered monitoring · Tunis Smart City · Zone Nord-Est</p>
+    </div>
+
+
+<!-- KPI ROW -->
+    <div class="kpi-row">
+        <div class="kpi-card green fade-in delay-1">
+            <div class="kpi-label">Consommation Actuelle
+            </div>
+            <div class="kpi-value" id="kpi-current">2.84
+            </div>
+            <div class="kpi-sub">MW · Réseau urbain <span class="kpi-badge badge-down" id="kpi-badge1">▼ 12%</span>
+            </div>
+        </div>
+
+    <div class="kpi-card blue fade-in delay-2">
+        <div class="kpi-label">Énergie Renouvelable
+        </div>
+        <div class="kpi-value">67<span style="font-size:1rem">%</span>
+        </div>
+        <div class="kpi-sub">Solaire + Éolien <span class="kpi-badge badge-up">▲ 8%</span>
+        </div>
+    </div>
+
+    <div class="kpi-card warn fade-in delay-3">
+        <div class="kpi-label">Économies Réalisées
+        </div>
+        <div class="kpi-value">324
+        </div>
+        <div class="kpi-sub">kWh aujourd'hui <span class="kpi-badge badge-up">▲ 23%</span>
+        </div>
+    </div>
+
+    <div class="kpi-card danger fade-in delay-4">
+        <div class="kpi-label">Zones Critiques
+        </div>
+        <div class="kpi-value" id="kpi-zones">2
+        </div>
+        <div class="kpi-sub">Sur 14 zones <span class="kpi-badge badge-down">▼ 1</span>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main-grid">
+
+    <!-- Bar Chart: Consommation par heure -->
+    <div class="panel fade-in delay-2">
+        <div class="panel-header">
+            <div class="panel-title"><span class="icon">📊</span> Consommation Horaire
+            </div>
+            <div class="panel-tag">AUJOURD'HUI
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="chart-area" id="bar-chart">
+            <!-- Dynamically filled -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Line Chart: Prédiction IA -->
+    <div class="panel fade-in delay-3">
+        <div class="panel-header">
+            <div class="panel-title"><span class="icon">🤖</span> Prédiction IA — 24h
+            </div>
+            <div class="panel-tag">MODÈLE LSTM
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="line-chart-wrap">
+                <svg id="line-chart" viewBox="0 0 400 160" preserveAspectRatio="none"></svg>
+            </div>
+        </div>
+    </div>
+    <!-- City Map -->
+    <div class="panel fade-in delay-4">
+        <div class="panel-header">
+            <div class="panel-title"><span class="icon">🗺️</span> Carte Thermique
+            </div>
+            <div class="panel-tag">LIVE
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="city-map">
+                <div class="map-bg">
+                </div>
+            <div class="map-grid">
+            </div>
+            <div class="zone-dot high" style="left:60%;top:30%">
+                <div class="zone-label">Zone Ind.
+                </div>
+            </div>
+            <div class="zone-dot high" style="left:25%;top:55%">
+                <div class="zone-label">Centre-Ville
+                </div>
+            </div>
+            <div class="zone-dot med" style="left:75%;top:65%">
+                <div class="zone-label">Résidentiel
+                </div>
+            </div>
+            <div class="zone-dot med" style="left:45%;top:75%">
+                <div class="zone-label">Commerces
+                </div>
+            </div>
+            <div class="zone-dot low" style="left:15%;top:25%">
+                <div class="zone-label">Parc Tech.
+                </div>
+            </div>
+            <div class="zone-dot low" style="left:80%;top:20%">
+                <div class="zone-label">Smart Hub
+                </div>
+            </div>
+            <div class="map-legend">
+                <div class="map-legend-item"><div class="map-legend-dot" style="background:var(--danger)"></div>Critique</div>
+                <div class="map-legend-item"><div class="map-legend-dot" style="background:var(--warn)"></div>Moyen</div>
+                <div class="map-legend-item"><div class="map-legend-dot" style="background:var(--accent)"></div>OK</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- BOTTOM GRID -->
+<div class="bottom-grid">
+
+    <!-- Alerts -->
+    <div class="panel fade-in delay-2">
+        <div class="panel-header">
+            <div class="panel-title"><span class="icon">🚨</span> Alertes IA Temps Réel
+            </div>
+        <div class="panel-tag" id="alert-count">3 ACTIVES
+        </div>
+        </div>
+        <div class="panel-body" id="alerts-body">
+            <div class="alert-item critical">
+                <div class="alert-icon">🔴
+                </div>
+            <div class="alert-text">
+                <div class="alert-title">Surcharge — Zone Industrielle
+                </div>
+                <div class="alert-sub">+34% seuil max · 14:32:07
+                </div>
+            </div>
+        </div>
+        <div class="alert-item warning">
+            <div class="alert-icon">🟡</div>
+            <div class="alert-text">
+                <div class="alert-title">Pic prévu dans 45 min
+                </div>
+                <div class="alert-sub">Centre-Ville · Confiance 91%
+                </div>
+            </div>
+        </div>
+        <div class="alert-item ok">
+            <div class="alert-icon">🟢</div>
+            <div class="alert-text">
+                <div class="alert-title">Optimisation automatique activée</div>
+                <div class="alert-sub">Smart Hub · Économie 18kWh</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Top Consumers -->
+<div class="panel fade-in delay-3">
+    <div class="panel-header">
+        <div class="panel-title"><span class="icon">📡</span> Top Consommateurs IoT
+        </div>
+        <div class="panel-tag">CAPTEURS ACTIFS
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="device-row">
+            <div class="device-icon">🏭
+            </div>
+            <div class="device-info">
+                <div class="device-name">Usine Nord
+                </div>
+                <div class="device-loc">Zone Industrielle
+                </div>
+            </div>
+            <div class="device-bar-wrap">
+                <div class="device-bar-bg"><div class="device-bar-fill" style="width:88%;background:var(--danger)"></div></div>
+            </div>
+            <div class="device-kw">880kW</div>
+        </div>
+        <div class="device-row">
+            <div class="device-icon">🏢</div>
+            <div class="device-info">
+                <div class="device-name">Tour Bureaux A</div>
+                <div class="device-loc">Centre-Ville</div>
+            </div>
+            <div class="device-bar-wrap">
+                <div class="device-bar-bg"><div class="device-bar-fill" style="width:65%;background:var(--warn)"></div></div>
+            </div>
+            <div class="device-kw">650kW
+            </div>
+        </div>
+        <div class="device-row">
+            <div class="device-icon">🏥</div>
+            <div class="device-info">
+                <div class="device-name">Hôpital Central</div>
+                <div class="device-loc">Zone Médicale</div>
+            </div>
+            <div class="device-bar-wrap">
+                <div class="device-bar-bg"><div class="device-bar-fill" style="width:55%;background:var(--accent2)"></div></div>
+            </div>
+            <div class="device-kw">550kW
+            </div>
+        </div>
+        <div class="device-row">
+            <div class="device-icon">🏫</div>
+            <div class="device-info">
+                <div class="device-name">Campus Univ.</div>
+                <div class="device-loc">Parc Tech.</div>
+            </div>
+            <div class="device-bar-wrap">
+                <div class="device-bar-bg"><div class="device-bar-fill" style="width:32%;background:var(--accent)"></div></div>
+            </div>
+            <div class="device-kw">320kW</div>
+        </div>
+        <div class="device-row">
+            <div class="device-icon">💡</div>
+            <div class="device-info">
+                <div class="device-name">Éclairage Urbain</div>
+                <div class="device-loc">Global</div>
+            </div>
+            <div class="device-bar-wrap">
+                <div class="device-bar-bg"><div class="device-bar-fill" style="width:22%;background:var(--accent)"></div></div>
+            </div>
+            <div class="device-kw">220kW</div>
+        </div>
+    </div>
+</div>
+    
+    <!-- AI Recommendations -->
+<div class="panel fade-in delay-4">
+    <div class="panel-header">
+        <div class="panel-title"><span class="icon">💡</span> Recommandations IA
+        </div>
+        <div class="panel-tag">AUTO-OPTIMISATION</div>
+    </div>
+    <div class="panel-body">
+        <div class="rec-item">
+            <div class="rec-num">1</div>
+            <div class="rec-text">
+                <div class="rec-title">Délestage intelligent Zone Ind.</div>
+                <div class="rec-detail">Réduire charge non-critique de 20% pendant pic 15h–17h</div>
+                <div class="rec-saving">💚 Économie estimée: 176 kWh</div>
+            </div>
+        </div>
+        <div class="rec-item">
+            <div class="rec-num">2</div>
+                <div class="rec-text">
+                <div class="rec-title">Optimiser climatisation bureaux</div>
+                <div class="rec-detail">Ajustement +2°C pendant heure de pointe</div>
+                <div class="rec-saving">💚 Économie estimée: 92 kWh</div>
+            </div>
+        </div>
+        <div class="rec-item">
+            <div class="rec-num">3</div>
+            <div class="rec-text">
+                <div class="rec-title">Basculer vers énergie solaire</div>
+                <div class="rec-detail">Production maximale 13h–16h, rediriger vers stockage</div>
+                <div class="rec-saving">💚 Économie estimée: 210 kWh</div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+<!-- FOOTER -->
+<div class="footer">
+    <span>NextGen AI</span> · Smart Energy Management · Challenge Solution · chatbouri.issam@gmail.com
+</div>
+
+<script src="index-js.js"></script>
+
+</body>
